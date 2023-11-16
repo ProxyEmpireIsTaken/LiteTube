@@ -1,14 +1,16 @@
 <p align="center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Mollomm1/LiteTube/blob/master/static/logo.png?raw=true">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Mollomm1/LiteTube/blob/master/static/logo_white_theme.png?raw=true">
-      <img alt="" src="">
-    </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Mollomm1/LiteTube/blob/assets/logo.png?raw=true">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/Mollomm1/LiteTube/blob/assets/logo_white.png?raw=true">
+    <img alt="" src="">
+  </picture>
 </p>
 
 This is a privacy frontend for YouTube, designed to enhance user privacy while watching videos.
 
-> demo (may be slow) : https://demo.litetube.freeddns.org/
+> Demo (may be slow) : https://demo.litetube.freeddns.org/
+
+> Dev Branch Demo (Unstable) : https://litetube.glitch.me/
 
 > Dev Branch Demo (Unstable) : https://litetube.glitch.me/
 
@@ -18,7 +20,6 @@ side note: demo is slow to start since it's hosted on replit, it take time to st
 
 <span style="color:red">`⚠️ Legal Disclaimer ⚠️: LiteTube frontend does not download or host any of the videos or content displayed on it. All content is streamed directly from the original YouTube servers. We are not responsible for the content uploaded by third-party users on YouTube, and we do not have control over the availability or accuracy of the content. LiteTube not affiliated with YouTube or Google, and LiteTube is not endorsed or certified by them.`</span>
 
-# Features
 * Ad Free
 * Fast and Lite
 
@@ -70,6 +71,10 @@ done ! you can now access website with http://localhost:5000
 MIT
 
 # Credit
+
+hero Icons : https://heroicons.com/
+
+svg repo icons:
 upload icon - https://www.svgrepo.com/svg/472024/upload-01
 
 view icon - https://www.svgrepo.com/svg/341292/view

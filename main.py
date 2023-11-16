@@ -15,8 +15,8 @@ def get_related(video):
     A function to get related videos for a given video
     '''
     search = Search(video["title"]+" "+video["uploader"])
-    search_results = search['results']
-    return(search_results)
+    search_VideosResults = search['VideosResults']
+    return(search_VideosResults)
 
 app = Flask(__name__, template_folder='templates', static_url_path='/static', static_folder='static')
 
@@ -39,6 +39,13 @@ def not_found(e):
 '''
 
 '''
+
+@app.route("/playlist/<playlist_id>")
+def playlist(playlist_id):
+    '''
+    The endpoint for watching a playlist
+    '''
+    return render_template('playlist.html')
 
 @app.route("/watch/<video_id>")
 def _watch(video_id):
@@ -68,7 +75,10 @@ def channel(channel_name):
     An endpoint for displaying a channel's data
     '''
     if request.args.get("token") and request.args.get("key"):
-        data = ChannelLoadPage(request.args.get("token"), request.args.get("key"))
+        try:
+            data = ChannelLoadPage(request.args.get("token"), request.args.get("key"))
+        except requests.exceptions.HTTPError:
+            data = "end"
         return(data)
     c = get_channel_data(channel_name)
     return render_template('channel.html', channel=c, videos=c['videos'], human_format=human_format)
@@ -90,11 +100,17 @@ def search():
     if not query:
         return "Please enter a search query!"
     if request.args.get("token") and request.args.get("key"):
-        data = SearchLoadPage(request.args.get("token"), request.args.get("key"))
+        try:
+            data = SearchLoadPage(request.args.get("token"), request.args.get("key"))
+        except requests.exceptions.HTTPError:
+            data = "end"
         return(data)
     search = Search(query)
-    search_results = search['results']
-    return render_template("search.html", search_results=search_results, key=search["key"], token=search["continuationtoken"], query=query, human_format=human_format)
+    search_AllResults = search["AllResults"]
+    #search_VideosResults = search["VideosResults"]
+    #search_ChannelsResults = search["ChannelsResults"]
+    #search_PlaylistResults = search["PlaylistResults"]
+    return render_template("search.html", search_AllResults=search_AllResults, key=search["key"], token=search["continuationtoken"], query=query, human_format=human_format)
 
 if __name__ == "__main__":
     '''
